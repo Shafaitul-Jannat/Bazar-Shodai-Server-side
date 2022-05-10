@@ -27,6 +27,7 @@ async function run() {
         await client.connect();
         const itemsCollection = client.db("bazarShodai").collection("items");
 
+        //GET all users API
         app.get('/item', async (req, res) => {
             const query = {};
             const cursor = itemsCollection.find(query);
@@ -34,6 +35,7 @@ async function run() {
             res.send(items);
         });
 
+        //GET single order API
         app.get('/item/:id', async (req, res) => {
             const id = req.params.id;
             const query = {
@@ -52,12 +54,28 @@ async function run() {
         })
 
         //Delete
-        app.delete('/service/:id', async (req, res) => {
+        app.delete('/item/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: ObjectId(id) };
             const result = await itemsCollection.deleteOne(query);
             res.send(result);
 
+        });
+        //update ship/status single order
+        app.put('/item/:id', async (req, res) => {
+            const id = req.params.id;
+            console.log('updating order', id)
+            const query = { _id: ObjectId(id) };
+            const options = { upsert: true };
+            const updateDoc = {
+                $set: {
+                    status: "Delivered"
+                },
+            };
+            const result = await itemsCollection.updateOne(query, updateDoc, options);
+            console.log('approving to deliver the order', result);
+
+            res.json(result);
         });
 
     }
