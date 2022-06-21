@@ -1,7 +1,7 @@
 # Project name: Bazar-Shodai (Server)
 
 This a full stack project about a website layout of a bike retailer service. This project has been made using HTML, React.js,React route, CSS, Bootstrap, firebase and mongodb.<br />
-Here is the live deployed link of this website: [https://bazar-shodai-warehouse.web.app] <br />
+Here is the live deployed link of this website: https://bazar-shodai-warehouse.web.app <br />
 Live API server link: https://shrouded-dusk-35482.herokuapp.com <br />
 Client-side UI code link: https://github.com/Shafaitul-Jannat/Bazar-Shodai-Client-side.git
 
